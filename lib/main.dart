@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_ai_chat/welcome_screen.dart';
-import 'package:google_ai_chat/test.dart';
+import 'package:google_ai_chat/ui/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +21,6 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Gemini AI',
       home: const WelcomeScreen(),
-      // home: const HomeWork(),
       theme: ThemeData.dark(),
     );
   }

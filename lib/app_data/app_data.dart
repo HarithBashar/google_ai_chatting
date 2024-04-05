@@ -13,10 +13,7 @@ class AppData extends GetxController {
     try {
 
       final model = GenerativeModel(model: 'gemini-pro', apiKey: apiKey);
-      List<Content> content = [];
-      for(Message message in messages){
-        content.add(Content.text(message.message));
-      }
+      final content = [Content.text(message)];
       final response = await model.generateContent(content);
 
 
@@ -62,7 +59,7 @@ class AppData extends GetxController {
 
   void addMessage(String message, int sender) {
     messages.add(Message(message: removeStars(message), sender: sender));
-    // update();
+    update();
   }
 
   void saveChat() async {
