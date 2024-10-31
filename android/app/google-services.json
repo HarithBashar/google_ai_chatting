@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940570438065",
+    "project_id": "ai-chat-1859d",
+    "storage_bucket": "ai-chat-1859d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940570438065:android:2cec176b1b02402f997590",
+        "android_client_info": {
+          "package_name": "com.example.google_ai_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB28IA1hG9jx2bEZrKTiLR8Zhvj_cg19Xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_ai_chat/chat_screen.dart';
+import 'package:google_ai_chat/ui/chat_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -72,35 +72,55 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        'Talk with',
-                        textStyle: TextStyle(
-                          fontSize: size.width * .1,
-                          fontWeight: FontWeight.bold,
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'Talk with',
+                          textStyle: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          speed: const Duration(milliseconds: 100),
+                          textAlign: TextAlign.center
                         ),
-                        speed: const Duration(milliseconds: 100),
-                        textAlign: TextAlign.center
-                      ),
-                      ColorizeAnimatedText(
-                        'GEMINI PRO',
-                        textStyle: TextStyle(
-                          fontSize: size.width * .1,
-                          fontWeight: FontWeight.bold,
+                        ColorizeAnimatedText(
+                          'GEMINI PRO',
+                          textStyle: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          speed: const Duration(milliseconds: 500),
+                          colors: colorizeColors,
                         ),
-                        speed: const Duration(milliseconds: 500),
-                        colors: colorizeColors,
-                      ),
-                    ],
-
-                    isRepeatingAnimation: true,
-                    repeatForever: true,
-                    pause: const Duration(milliseconds: 100),
-                    displayFullTextOnTap: true,
-                    stopPauseOnTap: true,
+                        TypewriterAnimatedText(
+                            'MADE BY:',
+                            textStyle: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            speed: const Duration(milliseconds: 100),
+                            textAlign: TextAlign.center
+                        ),
+                        ColorizeAnimatedText(
+                          '@HARITH.BASHAR',
+                          textStyle: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          speed: const Duration(milliseconds: 500),
+                          colors: colorizeColors,
+                        ),
+                      ],
+                      isRepeatingAnimation: true,
+                      repeatForever: true,
+                      pause: const Duration(milliseconds: 100),
+                      displayFullTextOnTap: true,
+                      stopPauseOnTap: true,
+                    ),
                   ),
                 ),
 
