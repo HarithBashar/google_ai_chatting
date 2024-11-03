@@ -24,118 +24,133 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
+    // Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          // robot icon
-          Expanded(
-            flex: 4,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Opacity(
-                  opacity: .7,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(200)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.red[400]!.withOpacity(.2),
-                          offset: const Offset(0, 150),
-                          blurRadius: 100,
-                          spreadRadius: 5,
-                        ),
-                      ],
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.red[200]!,
-                          Colors.red[300]!,
-                          Colors.red[500]!,
-                          Colors.red[500]!,
-                        ],
-                        stops: const [0.1, 0.3, 0.9, 1.0],
-                      ),
-                    ),
-                  ),
-                ),
-                Image.asset('assets/images/robot2.png'),
-              ],
+          // background photo
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background white.png'),
+                repeat: ImageRepeat.repeat,
+                opacity: .05,
+              ),
             ),
           ),
 
-          Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          'Talk with',
-                          textStyle: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          speed: const Duration(milliseconds: 100),
-                          textAlign: TextAlign.center
-                        ),
-                        ColorizeAnimatedText(
-                          'GEMINI PRO',
-                          textStyle: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          speed: const Duration(milliseconds: 500),
-                          colors: colorizeColors,
-                        ),
-                        TypewriterAnimatedText(
-                            'MADE BY:',
-                            textStyle: const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
+          Column(
+            children: [
+              // robot icon
+              Expanded(
+                flex: 4,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Opacity(
+                      opacity: .7,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(200)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.red[400]!.withOpacity(.2),
+                              offset: const Offset(0, 150),
+                              blurRadius: 100,
+                              spreadRadius: 5,
                             ),
-                            speed: const Duration(milliseconds: 100),
-                            textAlign: TextAlign.center
-                        ),
-                        ColorizeAnimatedText(
-                          '@HARITH.BASHAR',
-                          textStyle: const TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                          ],
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.red[200]!,
+                              Colors.red[300]!,
+                              Colors.red[500]!,
+                              Colors.red[500]!,
+                            ],
+                            stops: const [0.1, 0.3, 0.9, 1.0],
                           ),
-                          speed: const Duration(milliseconds: 500),
-                          colors: colorizeColors,
                         ),
-                      ],
-                      isRepeatingAnimation: true,
-                      repeatForever: true,
-                      pause: const Duration(milliseconds: 100),
-                      displayFullTextOnTap: true,
-                      stopPauseOnTap: true,
+                      ),
                     ),
-                  ),
+                    Image.asset('assets/images/robot2.png'),
+                  ],
                 ),
+              ),
 
-                IconButton(
-                  onPressed: () {
-                    Get.to(() => const ChatScreen());
-                  },
-                  icon: CircleAvatar(
-                    backgroundColor: Colors.red.withOpacity(.7),
-                    radius: 30,
-                    child: const Icon(Icons.arrow_forward_ios_rounded),
-                  ),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              'Talk with',
+                              textStyle: const TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              speed: const Duration(milliseconds: 100),
+                              textAlign: TextAlign.center
+                            ),
+                            ColorizeAnimatedText(
+                              'GEMINI PRO',
+                              textStyle: const TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              speed: const Duration(milliseconds: 500),
+                              colors: colorizeColors,
+                            ),
+                            TypewriterAnimatedText(
+                                'MADE BY:',
+                                textStyle: const TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                speed: const Duration(milliseconds: 100),
+                                textAlign: TextAlign.center
+                            ),
+                            ColorizeAnimatedText(
+                              '@HARITH.BASHAR',
+                              textStyle: const TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              speed: const Duration(milliseconds: 500),
+                              colors: colorizeColors,
+                            ),
+                          ],
+                          isRepeatingAnimation: true,
+                          repeatForever: true,
+                          pause: const Duration(milliseconds: 100),
+                          displayFullTextOnTap: true,
+                          stopPauseOnTap: true,
+                        ),
+                      ),
+                    ),
+
+                    IconButton(
+                      onPressed: () {
+                        Get.to(() => const ChatScreen());
+                      },
+                      icon: CircleAvatar(
+                        backgroundColor: Colors.red.withOpacity(.7),
+                        radius: 30,
+                        child: const Icon(Icons.arrow_forward_ios_rounded),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

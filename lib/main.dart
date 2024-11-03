@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_ai_chat/app_data/constants.dart';
 import 'package:google_ai_chat/firebase_options.dart';
 import 'package:google_ai_chat/ui/welcome_screen.dart';
 
@@ -31,7 +32,13 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Gemini AI',
       home: const WelcomeScreen(),
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        fontFamily: mainFont,
+        brightness: Brightness.dark,
+      ),
+
+
+
     );
   }
 }

@@ -46,12 +46,8 @@ class AppData extends GetxController {
     }
   }
 
-  String removeStars(String text) {
-    return text.replaceAll(RegExp(r'[*]'), '');
-  }
-
   void addMessage(String message, int sender) {
-    messages.add(Message(message: removeStars(message), sender: sender, timeSent: DateTime.now()));
+    messages.add(Message(message: message, sender: sender, timeSent: DateTime.now()));
     messages.sort((a, b) => b.timeSent.compareTo(a.timeSent));
     update();
   }
@@ -59,11 +55,6 @@ class AppData extends GetxController {
   void saveChat() async {
     messages.sort((a, b) => b.timeSent.compareTo(a.timeSent));
     GetStorage().write("chat", messages);
-    print("=======================");
-    print("=======================");
-    print(GetStorage().read('chat'));
-    print("=======================");
-    print("=======================");
   }
 
   Future<void> loadChat() async {
@@ -84,18 +75,8 @@ class AppData extends GetxController {
 
   Future<void> loadChat2() async {
     messages.clear();
-    // List<String> temp = box.read('chat') ?? [];
-    print("=======================");
-    print("=======================");
-    print(GetStorage().read('chat'));
-    print("=======================");
-    print("=======================");
     messages = GetStorage().read('chat');
 
-    // for (String message in temp) {
-    //   Map<String, dynamic> data = jsonDecode(message);
-    //   messages.add(Message(message: data['message'], sender: data['sender'], timeSent: DateTime.parse(data['timeSent'])));
-    // }
     messages.sort((a, b) => b.timeSent.compareTo(a.timeSent));
     update();
   }

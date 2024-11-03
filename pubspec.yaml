@@ -1,5 +1,5 @@
 name: google_ai_chat
-description: "A new Flutter project."
+description: "Ai chatting app."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -26,6 +26,9 @@ dependencies:
   firebase_core: ^3.2.0
 #  cloud_firestore: ^5.4.4
   get_storage: ^2.1.1
+  flutter_markdown: ^0.7.4+1
+  quickalert: ^1.1.0
+  url_launcher: ^6.3.1
 
 
 dev_dependencies:
@@ -62,6 +65,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: NotoSansArabic
+      fonts:
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Bold.ttf
+          weight: 700
   # fonts:
   #   - family: Schyler
   #     fonts:
