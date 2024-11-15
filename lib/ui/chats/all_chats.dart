@@ -247,7 +247,7 @@ class _AllChatsState extends State<AllChats> {
                                         subtitle: Column(
                                           children: [
                                             Text(
-                                              controller.allChats[index].messages.first.message.split('\n').join(' ').trim(),
+                                              controller.allChats[index].messages.first.message.split('\n').join(' ').trim().replaceAll(RegExp(r'[*_~`#">+\-!\[\]()]'), ''),
                                               maxLines: 2,
                                               style: const TextStyle(color: Colors.grey),
                                               textDirection: getTextDirection(controller.allChats[index].messages.first.message.split('\n').join(' ').trim()),
@@ -261,7 +261,18 @@ class _AllChatsState extends State<AllChats> {
                                                 const Center(child: Icon(Icons.blur_circular_rounded, size: 15)),
                                                 const SizedBox(width: 5),
                                                 Expanded(
-                                                  child: Text('Number of Ai Responses: ${controller.allChats[index].getNumberOfResponse()}'),
+                                                  child: RichText(
+                                                    text: TextSpan(
+                                                      style: TextStyle(fontFamily: mainFont, color: Colors.white54),
+                                                      children: [
+                                                        const TextSpan(text: "Number of Ai Responses:  "),
+                                                        TextSpan(
+                                                          text: controller.allChats[index].getNumberOfResponse().toString(),
+                                                          style: TextStyle(fontWeight: FontWeight.bold, color: mainColor.withOpacity(.45)),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -307,8 +318,7 @@ class _AllChatsState extends State<AllChats> {
     );
 
     // Define a Tween to animate the scale from 0.0 to 0.8
-    final Animation<double> scaleAnimation = Tween<double>(begin: 0.0, end: 0.8)
-        .animate(CurvedAnimation(parent: _controller!, curve: Curves.easeOutBack));
+    final Animation<double> scaleAnimation = Tween<double>(begin: 0.0, end: 0.8).animate(CurvedAnimation(parent: _controller!, curve: Curves.easeOutBack));
 
     _controller!.forward(); // Start the opening animation
 
@@ -350,7 +360,4 @@ class _AllChatsState extends State<AllChats> {
       });
     }
   }
-
-
-
 }

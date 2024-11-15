@@ -42,9 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-    } catch (e, f) {
-      print(e);
-    }
+    } catch (_) {}
   }
 
   void scrollToMessage(double messageOffset) {
@@ -351,7 +349,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           await scrollToTop();
                           // get the current tall offset of the list
                           // double currentOffset = scrollController.position.maxScrollExtent;
-                          print("Before: ${scrollController.position.maxScrollExtent}");
+                          // print("Before: ${scrollController.position.maxScrollExtent}");
 
                           widget.chat.addMessage(message, 0); // user send a message
                           setState(() => isAnswerGenerating = true);
@@ -361,8 +359,8 @@ class _ChatScreenState extends State<ChatScreen> {
                           await widget.chat.sendMessage(message);
                           setState(() => isAnswerGenerating = false);
 
-                          await scrollToTop();
-                          print("After: ${scrollController.position.maxScrollExtent}");
+                          // await scrollToTop();
+                          // print("After: ${scrollController.position.maxScrollExtent}");
                           // print( "Result: ${currentOffset - scrollController.position.maxScrollExtent}");
                           // print(scrollController.position.maxScrollExtent - (scrollController.position.maxScrollExtent - currentOffset));
                           // scrollToMessage(currentOffset - scrollController.position.maxScrollExtent);
