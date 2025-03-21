@@ -8,6 +8,13 @@ Color mainColor = Colors.redAccent;
 String mainFont = "NotoSansArabic";
 String version = '1.0.0';
 
+// String geminiModel = 'gemini-1.5-pro-001';
+String geminiModule = 'gemini-1.5-flash';
+String chatGPTModule = "gpt-4o-mini";
+
+String geminiModuleName = "Google Gemini";
+String chatGPTModuleName = 'openAI chatGPT';
+
 Map<int, String> daysOfWeek = {
   1: 'Mon',
   2: 'Tue',
