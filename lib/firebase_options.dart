@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         return windows;
       case TargetPlatform.linux:
@@ -46,30 +40,49 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB28IA1hG9jx2bEZrKTiLR8Zhvj_cg19Xk',
-    appId: '1:940570438065:android:2cec176b1b02402f997590',
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBIjg8ITydaIQr7FdhU2_dLcLS-iLa5oSs',
+    appId: '1:940570438065:web:582dd220d0362829997590',
     messagingSenderId: '940570438065',
     projectId: 'ai-chat-1859d',
-    storageBucket: 'ai-chat-1859d.appspot.com',
+    authDomain: 'ai-chat-1859d.firebaseapp.com',
+    storageBucket: 'ai-chat-1859d.firebasestorage.app',
+    measurementId: 'G-4EN3E4CJ0F',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyB28IA1hG9jx2bEZrKTiLR8Zhvj_cg19Xk',
+    appId: '1:940570438065:android:9de538d4ce6f6dbf997590',
+    messagingSenderId: '940570438065',
+    projectId: 'ai-chat-1859d',
+    storageBucket: 'ai-chat-1859d.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDXRQ47ed4xKF4_bQQ1jrjZgy2ZLBT78zU',
-    appId: '1:940570438065:ios:2ebf9e4c35b2e31a997590',
+    appId: '1:940570438065:ios:2572517b6ce35b7c997590',
     messagingSenderId: '940570438065',
     projectId: 'ai-chat-1859d',
-    storageBucket: 'ai-chat-1859d.appspot.com',
+    storageBucket: 'ai-chat-1859d.firebasestorage.app',
+    iosBundleId: 'com.example.googleAiChat',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDXRQ47ed4xKF4_bQQ1jrjZgy2ZLBT78zU',
+    appId: '1:940570438065:ios:2572517b6ce35b7c997590',
+    messagingSenderId: '940570438065',
+    projectId: 'ai-chat-1859d',
+    storageBucket: 'ai-chat-1859d.firebasestorage.app',
     iosBundleId: 'com.example.googleAiChat',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyBIjg8ITydaIQr7FdhU2_dLcLS-iLa5oSs',
-    appId: '1:940570438065:web:4ca04d693ec541ab997590',
+    appId: '1:940570438065:web:46ad1f0372a5c2a1997590',
     messagingSenderId: '940570438065',
     projectId: 'ai-chat-1859d',
     authDomain: 'ai-chat-1859d.firebaseapp.com',
-    storageBucket: 'ai-chat-1859d.appspot.com',
-    measurementId: 'G-L70T3XVS52',
+    storageBucket: 'ai-chat-1859d.firebasestorage.app',
+    measurementId: 'G-KY1XVGRF3Z',
   );
 }

@@ -49,8 +49,9 @@ class MyDialog {
     Function? onConfirm,
     Function? onCancel,
     bool showOnCancel = false,
+    Color dialogColor = CupertinoColors.systemYellow,
+    Color confirmTextColor = Colors.black,
   }) {
-    Color dialogColor = CupertinoColors.systemYellow;
     return QuickAlert.show(
       context: context,
       type: QuickAlertType.warning,
@@ -70,9 +71,8 @@ class MyDialog {
       onCancelBtnTap: onCancel != null ? onCancel() : null,
       showCancelBtn: showOnCancel,
       confirmBtnColor: dialogColor,
-      barrierColor: mainColor.withOpacity(.3),
       headerBackgroundColor: dialogColor,
-      confirmBtnTextStyle: TextStyle(fontFamily: mainFont, fontWeight: FontWeight.bold, color: Colors.black),
+      confirmBtnTextStyle: TextStyle(fontFamily: mainFont, fontWeight: FontWeight.bold, color: confirmTextColor),
     );
   }
 
@@ -177,7 +177,6 @@ class MyDialog {
       onCancelBtnTap: onCancel != null ? onCancel() : null,
       showCancelBtn: showOnCancel,
       confirmBtnColor: dialogColor,
-      barrierColor: mainColor.withOpacity(.3),
       headerBackgroundColor: dialogColor,
       confirmBtnTextStyle: TextStyle(fontFamily: mainFont, fontWeight: FontWeight.bold, color: Colors.white),
     );

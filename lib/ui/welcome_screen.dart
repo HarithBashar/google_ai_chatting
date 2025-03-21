@@ -1,7 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_ai_chat/ui/chat_screen.dart';
+import 'package:google_ai_chat/app_data/constants.dart';
+import 'package:google_ai_chat/ui/chats/all_chats.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -11,7 +15,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
   final colorizeColors = [
     Colors.purple,
     Colors.blue,
@@ -29,15 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Stack(
         children: [
           // background photo
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/background white.png'),
-                repeat: ImageRepeat.repeat,
-                opacity: .05,
-              ),
-            ),
-          ),
+          backgroundImage,
 
           Column(
             children: [
@@ -54,7 +49,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           borderRadius: const BorderRadius.vertical(bottom: Radius.circular(200)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.red[400]!.withOpacity(.2),
+                              color: mainColor.withOpacity(.1),
                               offset: const Offset(0, 150),
                               blurRadius: 100,
                               spreadRadius: 5,
@@ -84,22 +79,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: AnimatedTextKit(
                           animatedTexts: [
-                            TypewriterAnimatedText(
-                              'Talk with',
-                              textStyle: const TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              speed: const Duration(milliseconds: 100),
-                              textAlign: TextAlign.center
-                            ),
+                            TypewriterAnimatedText('Talk with',
+                                textStyle: const TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                speed: const Duration(milliseconds: 100),
+                                textAlign: TextAlign.center),
                             ColorizeAnimatedText(
                               'GEMINI PRO',
                               textStyle: const TextStyle(
@@ -109,15 +101,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               speed: const Duration(milliseconds: 500),
                               colors: colorizeColors,
                             ),
-                            TypewriterAnimatedText(
-                                'MADE BY:',
+                            TypewriterAnimatedText('MADE BY:',
                                 textStyle: const TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 speed: const Duration(milliseconds: 100),
-                                textAlign: TextAlign.center
-                            ),
+                                textAlign: TextAlign.center),
                             ColorizeAnimatedText(
                               '@HARITH.BASHAR',
                               textStyle: const TextStyle(
@@ -136,16 +126,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                       ),
                     ),
-
-                    IconButton(
-                      onPressed: () {
-                        Get.to(() => const ChatScreen());
-                      },
-                      icon: CircleAvatar(
-                        backgroundColor: Colors.red.withOpacity(.7),
-                        radius: 30,
-                        child: const Icon(Icons.arrow_forward_ios_rounded),
+                    const Text('Sign in with Google before using the app.'),
+                    CupertinoButton(
+                      child: Container(
+                        height: 60,
+                        width: 280,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey[800]!),
+                        ),
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Image.asset('assets/icons/google.png', height: 30),
+                            const Text("Sign in with Google", style: TextStyle(color: Colors.white70)),
+                          ],
+                        ),
                       ),
+                      onPressed: () => signInWithGoogle(),
                     ),
                   ],
                 ),
@@ -155,5 +154,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    if (googleUser == null) {
+      return;
+    }
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    await FirebaseAuth.instance.signInWithCredential(credential);
+
+    Get.offAll(() => const AllChats());
   }
 }

@@ -2,17 +2,22 @@
   "project_info": {
     "project_number": "940570438065",
     "project_id": "ai-chat-1859d",
-    "storage_bucket": "ai-chat-1859d.appspot.com"
+    "storage_bucket": "ai-chat-1859d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:940570438065:android:2cec176b1b02402f997590",
+        "mobilesdk_app_id": "1:940570438065:android:9de538d4ce6f6dbf997590",
         "android_client_info": {
           "package_name": "com.example.google_ai_chat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "940570438065-1ala91prfi5l242o803hqi0kau9bj8hq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB28IA1hG9jx2bEZrKTiLR8Zhvj_cg19Xk"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940570438065-1ala91prfi5l242o803hqi0kau9bj8hq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "940570438065-or6asgohen07r0js874v19cr6c18ii44.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.googleAiChat"
+              }
+            }
+          ]
         }
       }
     }
